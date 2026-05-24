@@ -3,12 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Fabi — UI/UX Designer apaixonada por criar experiências digitais memoráveis." />
-  <meta property="og:title" content="Fabi — UI/UX Designer" />
-  <meta property="og:description" content="Transformo ideias complexas em designs simples, eficientes e memoráveis." />
+  <meta name="description" content="Fabi — UI/UX Designer apaixonada por criar experiências digitais memoráveis. Interfaces, landing pages e design systems para startups e empresas." />
+  <meta name="keywords" content="UI UX Designer, Web Design, Figma, Landing Page, Design System, Branding, Freelancer Design, Designer Brasil" />
+  <meta name="author" content="Fabi" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://fabianaju.github.io/sitewebdesigner/" />
+  <meta property="og:title" content="Fabi — UI/UX Designer | Interfaces que convertem" />
+  <meta property="og:description" content="Transformo ideias complexas em designs simples, eficientes e memoráveis. Disponível para projetos freelance." />
   <meta property="og:image" content="https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/header.png" />
   <meta property="og:type" content="website" />
-  <title>Fabi — UI/UX Designer</title>
+  <meta property="og:url" content="https://fabianaju.github.io/sitewebdesigner/" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fabi — UI/UX Designer" />
+  <meta name="twitter:description" content="Transformo ideias complexas em designs simples, eficientes e memoráveis." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/header.png" />
+  <title>Fabi — UI/UX Designer | Interfaces que convertem</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
@@ -982,6 +992,120 @@
     }
     .tool-card:hover .tool-level { opacity: 1; }
 
+    /* ─── LOADING SCREEN ────────────────────────────────────────── */
+    #loading-screen {
+      position: fixed; inset: 0; z-index: 99999;
+      background: #111114;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1.5rem;
+      transition: opacity .6s ease;
+    }
+    #loading-screen.hide { opacity: 0; pointer-events: none; }
+    .loading-logo {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, #ff014f, #ff6b35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900; color: #fff;
+      animation: loading-pulse 1.2s ease-in-out infinite;
+    }
+    .loading-bar-wrap {
+      width: 160px; height: 3px;
+      background: rgba(255,255,255,.1);
+      border-radius: 99px; overflow: hidden;
+    }
+    .loading-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #ff014f, #ff6b35);
+      border-radius: 99px;
+      animation: loading-fill 1.8s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    .loading-text {
+      font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.45); font-weight: 500;
+    }
+    @keyframes loading-pulse {
+      0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,1,79,.4); }
+      50% { transform: scale(1.06); box-shadow: 0 0 0 14px rgba(255,1,79,0); }
+    }
+    @keyframes loading-fill {
+      0% { width: 0%; } 100% { width: 100%; }
+    }
+
+    /* ─── WHATSAPP BUTTON ───────────────────────────────────────── */
+    .whatsapp-btn {
+      position: fixed; bottom: 2rem; left: 2rem;
+      z-index: 98;
+      width: 56px; height: 56px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.6rem;
+      box-shadow: 0 8px 24px rgba(37,211,102,.45);
+      transition: transform var(--tr), box-shadow var(--tr);
+      animation: float 4s ease-in-out infinite 2s;
+    }
+    .whatsapp-btn:hover {
+      transform: scale(1.12) translateY(-3px);
+      box-shadow: 0 14px 32px rgba(37,211,102,.6);
+      color: #fff;
+    }
+    .whatsapp-btn .wa-tooltip {
+      position: absolute; left: 68px; bottom: 50%;
+      transform: translateY(50%);
+      background: #111; color: #fff;
+      font-size: .75rem; font-weight: 600;
+      padding: .35rem .75rem; border-radius: 8px;
+      white-space: nowrap; opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+    }
+    .whatsapp-btn:hover .wa-tooltip { opacity: 1; }
+
+    /* ─── PORTFOLIO FILTER ──────────────────────────────────────── */
+    .portfolio__filters {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: .6rem;
+      margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      padding: .45rem 1.2rem;
+      border-radius: 50px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem; font-weight: 600;
+      letter-spacing: .04em;
+      cursor: none;
+      transition: all var(--tr);
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .portfolio-card.hidden { display: none !important; }
+    /* Quando filtro ativo: grid simples 3 colunas, sem assimétrico */
+    .portfolio__grid.filtered {
+      grid-template-columns: repeat(3, 1fr) !important;
+      grid-template-rows: none !important;
+    }
+    .portfolio__grid.filtered .portfolio-card {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+      aspect-ratio: 4/3 !important;
+      min-height: unset !important;
+    }
+    @media (max-width: 1024px) {
+      .portfolio__grid.filtered { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 768px) {
+      .portfolio__grid.filtered {
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+    }
+
     /* ─── SCRAMBLE TEXT ──────────────────────────────────────────── */
     .scramble-char { display: inline-block; }
 
@@ -1130,13 +1254,22 @@
     @media (max-width: 1024px) {
       .process__steps { grid-template-columns: repeat(2, 1fr); }
       .process__steps::before { display: none; }
-      .portfolio__grid { grid-template-columns: repeat(2,1fr); }
+      /* Reset grid assimétrico → 2 colunas iguais */
+      .portfolio__grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: none;
+      }
       .portfolio-card:nth-child(1),
       .portfolio-card:nth-child(2),
       .portfolio-card:nth-child(3),
       .portfolio-card:nth-child(4),
       .portfolio-card:nth-child(5),
-      .portfolio-card:nth-child(6) { grid-column: span 1; aspect-ratio: 4/3; min-height: unset; }
+      .portfolio-card:nth-child(6) {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        aspect-ratio: 4/3 !important;
+        min-height: unset !important;
+      }
       .timeline__items { grid-template-columns: repeat(3,1fr); }
       .timeline-item:nth-child(4),
       .timeline-item:nth-child(5) { display: none; }
@@ -1149,8 +1282,33 @@
       .hero__desc { margin-inline: auto; }
       .about__inner { grid-template-columns: 1fr; gap: 3rem; }
       .about__img-wrap { display: none; }
-      .portfolio__grid { grid-template-columns: 1fr; }
-      .portfolio-card:nth-child(n) { grid-column: span 1; aspect-ratio: 4/3; }
+      /* Reset total do grid assimétrico → 1 coluna */
+      .portfolio__grid {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+      .portfolio-card,
+      .portfolio-card:nth-child(1),
+      .portfolio-card:nth-child(2),
+      .portfolio-card:nth-child(3),
+      .portfolio-card:nth-child(4),
+      .portfolio-card:nth-child(5),
+      .portfolio-card:nth-child(6) {
+        grid-column: unset !important;
+        grid-row: unset !important;
+        aspect-ratio: 16/9 !important;
+        min-height: unset !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+      .portfolio-card img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
       .testimonials__grid { grid-template-columns: 1fr; }
       .contact__inner { grid-template-columns: 1fr; gap: 3rem; }
       .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -1178,16 +1336,42 @@
       .timeline__items { grid-template-columns: repeat(2,1fr); gap: 1rem; }
       .timeline__line { display: none; }
       .tools__grid { grid-template-columns: repeat(3,1fr); }
+      /* Filtros do portfólio menores */
+      .portfolio__filters { gap: .4rem; }
+      .filter-btn { font-size: .75rem; padding: .35rem .9rem; }
     }
     @media (max-width: 480px) {
-      .portfolio__grid { grid-template-columns: 1fr; }
+      .portfolio__grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: .75rem !important;
+      }
+      .portfolio-card,
+      .portfolio-card:nth-child(n) {
+        aspect-ratio: 4/3 !important;
+        width: 100% !important;
+      }
       .process__steps { grid-template-columns: 1fr; }
       .timeline__items { grid-template-columns: 1fr 1fr; }
       .tools__grid { grid-template-columns: repeat(2,1fr); }
+      .filter-btn { font-size: .72rem; padding: .3rem .75rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-logo">F</div>
+    <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+    <span class="loading-text">Carregando portfólio...</span>
+  </div>
+
+  <!-- WhatsApp flutuante -->
+  <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Fabi%2C%20vi%20seu%20portf%C3%B3lio!" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">
+    <i class="ri-whatsapp-line"></i>
+    <span class="wa-tooltip">Fale pelo WhatsApp</span>
+  </a>
 
   <!-- Custom cursor -->
   <div class="cursor-dot" id="cursor-dot"></div>
@@ -1632,38 +1816,48 @@
       <h2 class="section-title">Portfólio</h2>
       <p>Uma seleção dos meus projetos mais recentes e impactantes.</p>
     </div>
+    <!-- Filtros de categoria -->
+    <div class="portfolio__filters">
+      <button class="filter-btn active" data-filter="todos">Todos</button>
+      <button class="filter-btn" data-filter="E-commerce">E-commerce</button>
+      <button class="filter-btn" data-filter="Landing Page">Landing Page</button>
+      <button class="filter-btn" data-filter="UI Design">UI Design</button>
+      <button class="filter-btn" data-filter="App Design">App Design</button>
+      <button class="filter-btn" data-filter="Identidade Visual">Identidade Visual</button>
+      <button class="filter-btn" data-filter="Portfólio">Portfólio</button>
+    </div>
     <div class="portfolio__grid">
-      <div class="portfolio-card reveal" data-modal="0">
+      <div class="portfolio-card reveal" data-modal="0" data-category="E-commerce">
         <img src="https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio1.png" alt="Floricultura Online" loading="lazy" />
         <span class="portfolio-tag">E-commerce</span>
         <div class="portfolio-overlay"><h3>Floricultura Online</h3><p>E-commerce & Branding</p></div>
         <a href="#" class="portfolio-link" aria-label="Ver projeto"><i class="ri-eye-line"></i></a>
       </div>
-      <div class="portfolio-card reveal" data-modal="1">
+      <div class="portfolio-card reveal" data-modal="1" data-category="Landing Page">
         <img src="https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio2.png" alt="Produtos Orgânicos" loading="lazy" />
         <span class="portfolio-tag">Landing Page</span>
         <div class="portfolio-overlay"><h3>Produtos Orgânicos</h3><p>Landing Page & UX</p></div>
         <a href="#" class="portfolio-link" aria-label="Ver projeto"><i class="ri-eye-line"></i></a>
       </div>
-      <div class="portfolio-card reveal" data-modal="2">
+      <div class="portfolio-card reveal" data-modal="2" data-category="Identidade Visual">
         <img src="https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio3.png" alt="Loja de Cupcakes" loading="lazy" />
         <span class="portfolio-tag">Identidade Visual</span>
         <div class="portfolio-overlay"><h3>Loja de Cupcakes</h3><p>Identidade Visual & Web</p></div>
         <a href="#" class="portfolio-link" aria-label="Ver projeto"><i class="ri-eye-line"></i></a>
       </div>
-      <div class="portfolio-card reveal" data-modal="3">
+      <div class="portfolio-card reveal" data-modal="3" data-category="UI Design">
         <img src="https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio4.png" alt="Salão de Beleza" loading="lazy" />
         <span class="portfolio-tag">UI Design</span>
         <div class="portfolio-overlay"><h3>Salão de Beleza</h3><p>UI Design & Booking</p></div>
         <a href="#" class="portfolio-link" aria-label="Ver projeto"><i class="ri-eye-line"></i></a>
       </div>
-      <div class="portfolio-card reveal" data-modal="4">
+      <div class="portfolio-card reveal" data-modal="4" data-category="App Design">
         <img src="https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio5.png" alt="Restaurante" loading="lazy" />
         <span class="portfolio-tag">App Design</span>
         <div class="portfolio-overlay"><h3>Restaurante</h3><p>App & Web Design</p></div>
         <a href="#" class="portfolio-link" aria-label="Ver projeto"><i class="ri-eye-line"></i></a>
       </div>
-      <div class="portfolio-card reveal" data-modal="5">
+      <div class="portfolio-card reveal" data-modal="5" data-category="Portfólio">
         <img src="https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio6.png" alt="Fotografia" loading="lazy" />
         <span class="portfolio-tag">Portfólio</span>
         <div class="portfolio-overlay"><h3>Fotografia</h3><p>Portfólio & Galeria</p></div>
@@ -2026,12 +2220,12 @@
 
     // ── Portfolio Modal ───────────────────────────────────────────
     const modalData = [
-      { tag: 'E-commerce', title: 'Floricultura Online', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio1.png', desc: 'Redesign completo de uma floricultura online, focado em conversão e experiência de compra. Aumento de 55% no tempo médio na página e 38% nas vendas após o lançamento.', techs: ['Figma', 'Shopify', 'Design System', 'User Testing', 'Motion'] },
-      { tag: 'Landing Page', title: 'Produtos Orgânicos', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio2.png', desc: 'Landing page de alta performance para marca de produtos orgânicos. Foco em storytelling visual e CTA otimizados, gerando 2.4× mais leads que a versão anterior.', techs: ['Figma', 'Webflow', 'A/B Testing', 'SEO Design', 'Copywriting visual'] },
-      { tag: 'Identidade Visual', title: 'Loja de Cupcakes', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio3.png', desc: 'Criação da identidade visual completa para uma loja artesanal de cupcakes — logo, paleta, tipografia, embalagens e presença digital unificada.', techs: ['Illustrator', 'Figma', 'Branding', 'Print', 'Social Media Kit'] },
-      { tag: 'UI Design', title: 'Salão de Beleza', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio4.png', desc: 'App de agendamento para salão de beleza com sistema de gestão de agenda, histórico de clientes e notificações inteligentes. Redução de 70% em faltas com lembretes automáticos.', techs: ['Figma', 'Protótipo interativo', 'Design System', 'iOS & Android'] },
-      { tag: 'App Design', title: 'Restaurante', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio5.png', desc: 'Plataforma digital completa para restaurante: cardápio digital, pedidos online e sistema de reservas. Integração com cozinha via painel de gestão em tempo real.', techs: ['Figma', 'User Research', 'Wireframe', 'React UI', 'Dashboard'] },
-      { tag: 'Portfólio', title: 'Fotografia Fine Art', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio6.png', desc: 'Portfólio digital para fotógrafa fine art com galeria imersiva, sistema de contratação e blog. Performance máxima com Lighthouse score 98 em todos os critérios.', techs: ['Figma', 'Framer', 'Animações', 'Galeria', 'CMS'] },
+      { tag: 'E-commerce', title: 'Floricultura Online', url: 'https://github.com/Fabianaju/sitewebdesigner', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio1.png', desc: 'Redesign completo de uma floricultura online, focado em conversão e experiência de compra. Aumento de 55% no tempo médio na página e 38% nas vendas após o lançamento.', techs: ['Figma', 'Shopify', 'Design System', 'User Testing', 'Motion'] },
+      { tag: 'Landing Page', title: 'Produtos Orgânicos', url: 'https://github.com/Fabianaju/sitewebdesigner', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio2.png', desc: 'Landing page de alta performance para marca de produtos orgânicos. Foco em storytelling visual e CTA otimizados, gerando 2.4× mais leads que a versão anterior.', techs: ['Figma', 'Webflow', 'A/B Testing', 'SEO Design', 'Copywriting visual'] },
+      { tag: 'Identidade Visual', title: 'Loja de Cupcakes', url: 'https://github.com/Fabianaju/sitewebdesigner', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio3.png', desc: 'Criação da identidade visual completa para uma loja artesanal de cupcakes — logo, paleta, tipografia, embalagens e presença digital unificada.', techs: ['Illustrator', 'Figma', 'Branding', 'Print', 'Social Media Kit'] },
+      { tag: 'UI Design', title: 'Salão de Beleza', url: 'https://github.com/Fabianaju/sitewebdesigner', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio4.png', desc: 'App de agendamento para salão de beleza com sistema de gestão de agenda, histórico de clientes e notificações inteligentes. Redução de 70% em faltas com lembretes automáticos.', techs: ['Figma', 'Protótipo interativo', 'Design System', 'iOS & Android'] },
+      { tag: 'App Design', title: 'Restaurante', url: 'https://github.com/Fabianaju/sitewebdesigner', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio5.png', desc: 'Plataforma digital completa para restaurante: cardápio digital, pedidos online e sistema de reservas. Integração com cozinha via painel de gestão em tempo real.', techs: ['Figma', 'User Research', 'Wireframe', 'React UI', 'Dashboard'] },
+      { tag: 'Portfólio', title: 'Fotografia Fine Art', url: 'https://github.com/Fabianaju/sitewebdesigner', img: 'https://raw.githubusercontent.com/Fabianaju/sitewebdesigner/main/portfolio6.png', desc: 'Portfólio digital para fotógrafa fine art com galeria imersiva, sistema de contratação e blog. Performance máxima com Lighthouse score 98 em todos os critérios.', techs: ['Figma', 'Framer', 'Animações', 'Galeria', 'CMS'] },
     ];
 
     const modalOverlay = document.getElementById('modal-overlay');
@@ -2043,6 +2237,17 @@
       const img = document.getElementById('modal-img');
       img.src = d.img; img.alt = d.title; img.style.display = 'block';
       document.getElementById('modal-techs').innerHTML = d.techs.map(t => `<span class="modal__tech">${t}</span>`).join('');
+      const cta = document.getElementById('modal-cta');
+      // Show "Ver projeto ao vivo" if URL available, else contact
+      if (d.url && d.url !== '#') {
+        cta.href = d.url; cta.target = '_blank'; cta.rel = 'noopener';
+        cta.innerHTML = '<i class="ri-external-link-line"></i> Ver projeto ao vivo';
+        cta.onclick = null;
+      } else {
+        cta.href = '#contato'; cta.target = ''; cta.rel = '';
+        cta.innerHTML = '<i class="ri-send-plane-line"></i> Quero um projeto assim';
+        cta.onclick = () => closeModal();
+      }
       modalOverlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -2060,8 +2265,10 @@
     modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    // ── Contact form ─────────────────────────────────────────────
-    document.getElementById('form-submit').addEventListener('click', () => {
+    // ── Contact form (Formspree) ──────────────────────────────────
+    // IMPORTANTE: troque "SEU_ID_FORMSPREE" pelo seu ID real em formspree.io
+    const FORMSPREE_ID = 'SEU_ID_FORMSPREE';
+    document.getElementById('form-submit').addEventListener('click', async () => {
       const name    = document.getElementById('fname').value.trim();
       const email   = document.getElementById('femail').value.trim();
       const subject = document.getElementById('fsubject').value.trim();
@@ -2070,11 +2277,56 @@
       const btn = document.getElementById('form-submit');
       btn.innerHTML = '<i class="ri-loader-4-line"></i> Enviando...';
       btn.style.opacity = '.7';
+      btn.disabled = true;
+      try {
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, subject, message: msg })
+        });
+        if (res.ok) {
+          btn.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+          ['fname','femail','fsubject','fmessage'].forEach(id => document.getElementById(id).value = '');
+        } else {
+          throw new Error();
+        }
+      } catch {
+        btn.innerHTML = '<i class="ri-send-plane-line"></i> Enviar mensagem';
+        btn.style.opacity = '1'; btn.disabled = false;
+        alert('Erro ao enviar. Tente novamente ou me contate pelo WhatsApp.');
+      }
+    });
+
+    // ── Loading screen ────────────────────────────────────────────
+    window.addEventListener('load', () => {
       setTimeout(() => {
-        btn.style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-        ['fname','femail','fsubject','fmessage'].forEach(id => document.getElementById(id).value = '');
-      }, 1200);
+        const ls = document.getElementById('loading-screen');
+        ls.classList.add('hide');
+        setTimeout(() => ls.remove(), 700);
+      }, 1900);
+    });
+
+    // ── Portfolio filter ──────────────────────────────────────────
+    const portfolioGrid = document.querySelector('.portfolio__grid');
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        if (filter === 'todos') {
+          portfolioGrid.classList.remove('filtered');
+        } else {
+          portfolioGrid.classList.add('filtered');
+        }
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+          if (filter === 'todos' || card.dataset.category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
     });
   </script>
 </body>
